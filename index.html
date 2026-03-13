@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aryan Vashishta – Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #f9f6f1;
+    --ink: #1a1814;
+    --charcoal: #3a3630;
+    --warm-mid: #7a6f63;
+    --accent: #c8a96e;
+    --accent-light: #e8d9bb;
+    --rule: #ddd5c8;
+    --card-bg: #ffffff;
+    --tag-bg: #f0ebe3;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(249,246,241,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 500; letter-spacing: 0.02em;
+    color: var(--ink); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-size: 13px; font-weight: 400; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--warm-mid);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 60px 80px;
+    border-bottom: 1px solid var(--rule);
+    position: relative; overflow: hidden;
+  }
+  .hero-bg-text {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(120px, 18vw, 260px);
+    font-weight: 300; letter-spacing: -0.03em;
+    color: rgba(200,169,110,0.07);
+    white-space: nowrap; pointer-events: none; user-select: none;
+    animation: fadein 1.6s ease forwards;
+  }
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 20px;
+    animation: slideup 0.9s ease forwards; opacity: 0;
+    animation-delay: 0.2s;
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 8vw, 110px);
+    font-weight: 300; line-height: 1;
+    letter-spacing: -0.02em;
+    animation: slideup 0.9s ease forwards; opacity: 0;
+    animation-delay: 0.35s;
+  }
+  .hero-name em { font-style: italic; color: var(--accent); }
+  .hero-sub {
+    font-size: 16px; color: var(--warm-mid); margin-top: 24px;
+    max-width: 520px; font-weight: 300;
+    animation: slideup 0.9s ease forwards; opacity: 0;
+    animation-delay: 0.5s;
+  }
+  .hero-meta {
+    display: flex; gap: 40px; margin-top: 52px; flex-wrap: wrap;
+    animation: slideup 0.9s ease forwards; opacity: 0;
+    animation-delay: 0.65s;
+  }
+  .hero-meta-item { }
+  .hero-meta-label {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--warm-mid); display: block; margin-bottom: 4px;
+  }
+  .hero-meta-value { font-size: 14px; font-weight: 500; }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-top: 48px; padding: 14px 32px;
+    background: var(--ink); color: var(--cream);
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; font-weight: 500;
+    transition: background 0.25s, color 0.25s;
+    animation: slideup 0.9s ease forwards; opacity: 0;
+    animation-delay: 0.8s;
+  }
+  .hero-cta:hover { background: var(--accent); color: var(--ink); }
+  .hero-cta-row { display: flex; gap: 16px; flex-wrap: wrap; }
+  .hero-cta-outline {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-top: 48px; padding: 13px 32px;
+    border: 1px solid var(--charcoal); color: var(--charcoal);
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; font-weight: 500;
+    transition: all 0.25s;
+    animation: slideup 0.9s ease forwards; opacity: 0;
+    animation-delay: 0.9s;
+  }
+  .hero-cta-outline:hover { background: var(--charcoal); color: var(--cream); }
+
+  /* ── SECTION SHELL ── */
+  section { padding: 100px 60px; border-bottom: 1px solid var(--rule); }
+  .section-header { display: flex; align-items: baseline; gap: 24px; margin-bottom: 64px; }
+  .section-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; font-weight: 400; color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300; letter-spacing: -0.01em;
+  }
+  .section-rule { flex: 1; height: 1px; background: var(--rule); margin-left: 12px; }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+  }
+  .about-text { font-size: 16px; color: var(--charcoal); font-weight: 300; line-height: 1.85; }
+  .about-text p + p { margin-top: 20px; }
+  .about-stats { display: flex; flex-direction: column; gap: 0; }
+  .about-stat {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 20px 0; border-bottom: 1px solid var(--rule);
+  }
+  .about-stat:first-child { border-top: 1px solid var(--rule); }
+  .about-stat-label { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-mid); }
+  .about-stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 500; color: var(--ink);
+  }
+
+  /* ── SKILLS STRIP ── */
+  .skills-strip {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-top: 0;
+  }
+  .skill-tag {
+    padding: 7px 16px; background: var(--tag-bg);
+    font-size: 12px; letter-spacing: 0.06em;
+    color: var(--charcoal); border: 1px solid var(--rule);
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .project-card {
+    background: var(--card-bg);
+    padding: 44px 44px 40px;
+    border: 1px solid var(--rule);
+    position: relative;
+    transition: box-shadow 0.3s, transform 0.3s;
+    cursor: default;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--accent);
+    transition: height 0.35s ease;
+  }
+  .project-card:hover::before { height: 100%; }
+  .project-card:hover {
+    box-shadow: 0 12px 48px rgba(0,0,0,0.07);
+    transform: translateY(-3px);
+  }
+  .project-cat {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 16px; display: block;
+  }
+  .project-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 500; line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .project-date {
+    font-size: 11px; color: var(--warm-mid); letter-spacing: 0.08em;
+    margin-bottom: 20px; display: block;
+  }
+  .project-desc {
+    font-size: 13.5px; color: var(--charcoal);
+    line-height: 1.75; font-weight: 300;
+  }
+  .project-highlights {
+    margin-top: 20px; list-style: none; display: flex; flex-direction: column; gap: 8px;
+  }
+  .project-highlights li {
+    font-size: 13px; color: var(--charcoal);
+    padding-left: 16px; position: relative; line-height: 1.6;
+  }
+  .project-highlights li::before {
+    content: '→'; position: absolute; left: 0;
+    color: var(--accent); font-size: 11px; top: 2px;
+  }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+  .project-tag {
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--warm-mid); padding: 4px 12px;
+    background: var(--tag-bg); border: 1px solid var(--rule);
+  }
+
+  /* featured card spans 2 cols */
+  .project-card.featured {
+    grid-column: span 2;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+  }
+  .featured-left { }
+  .featured-right { padding-top: 4px; }
+  .featured-metric {
+    display: flex; gap: 32px; flex-wrap: wrap; margin-top: 28px;
+  }
+  .metric-box {
+    flex: 1; min-width: 120px;
+    padding: 20px 0; border-top: 2px solid var(--accent-light);
+  }
+  .metric-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 500; color: var(--accent);
+    display: block; line-height: 1;
+  }
+  .metric-label {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--warm-mid); margin-top: 6px; display: block;
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+  .exp-item {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 48px; padding: 44px 0; border-bottom: 1px solid var(--rule);
+  }
+  .exp-item:first-child { border-top: 1px solid var(--rule); }
+  .exp-left { }
+  .exp-period {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); display: block; margin-bottom: 10px;
+  }
+  .exp-org {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 500;
+  }
+  .exp-loc { font-size: 12px; color: var(--warm-mid); margin-top: 4px; }
+  .exp-right { }
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400; margin-bottom: 16px;
+    font-style: italic;
+  }
+  .exp-points { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .exp-points li {
+    font-size: 13.5px; color: var(--charcoal);
+    padding-left: 18px; position: relative; line-height: 1.7; font-weight: 300;
+  }
+  .exp-points li::before {
+    content: '–'; position: absolute; left: 0; color: var(--accent);
+  }
+
+  /* ── CONTACT ── */
+  .contact-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+  }
+  .contact-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 64px); font-weight: 300; line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .contact-headline em { font-style: italic; color: var(--accent); }
+  .contact-links { display: flex; flex-direction: column; gap: 0; }
+  .contact-link {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 0; border-bottom: 1px solid var(--rule);
+    text-decoration: none; color: var(--ink);
+    transition: color 0.2s;
+  }
+  .contact-link:first-child { border-top: 1px solid var(--rule); }
+  .contact-link:hover { color: var(--accent); }
+  .contact-link-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--warm-mid); display: block; margin-bottom: 4px; }
+  .contact-link-value { font-size: 15px; font-weight: 400; }
+  .contact-link-arrow { font-size: 20px; opacity: 0.4; transition: opacity 0.2s, transform 0.2s; }
+  .contact-link:hover .contact-link-arrow { opacity: 1; transform: translateX(4px); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 36px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; font-weight: 400; color: var(--warm-mid);
+  }
+  .footer-note { font-size: 12px; color: var(--warm-mid); letter-spacing: 0.06em; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes slideup {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadein {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 18px 28px; }
+    .nav-links { gap: 20px; }
+    section { padding: 72px 28px; }
+    .hero { padding: 0 28px 60px; }
+    .about-grid,
+    .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-column: span 1; display: block; }
+    .exp-item { grid-template-columns: 1fr; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Aryan Vashishta</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-text">AV</div>
+  <div class="hero-eyebrow">Portfolio · 2025</div>
+  <h1 class="hero-name">Aryan<br><em>Vashishta</em></h1>
+  <p class="hero-sub">Actuarial Studies & Commerce student at UNSW, specialising in Data Science and Finance — bridging quantitative rigour with financial insight.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">University</span>
+      <span class="hero-meta-value">UNSW Sydney</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Degree</span>
+      <span class="hero-meta-value">Actuarial Studies / Commerce</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">WAM (Tri 3, 2025)</span>
+      <span class="hero-meta-value">86.00 — Top 2%</span>
+    </div>
+    <div class="hero-meta-item">
+      <span class="hero-meta-label">Graduating</span>
+      <span class="hero-meta-value">December 2026</span>
+    </div>
+  </div>
+  <div class="hero-cta-row">
+    <a class="hero-cta" href="#projects">View Projects</a>
+    <a class="hero-cta-outline" href="#contact">Get in Touch</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-number">01</span>
+    <h2 class="section-title">About</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm an Actuarial Studies and Commerce student at UNSW, majoring in Data Science and Finance. My work sits at the intersection of quantitative modelling, financial analysis, and data-driven decision-making.</p>
+      <p>From building backtesting engines for copper futures to constructing fully integrated LBO models, I combine statistical rigour with commercial awareness to produce insights that are both analytically robust and practically actionable.</p>
+      <p>I've competed in and placed in national case competitions, interned in project finance on $500M+ renewable energy transactions, and consistently ranked in the top cohort of my program.</p>
+      <div class="skills-strip" style="margin-top:32px;">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">R</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">Excel / VBA</span>
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">Machine Learning</span>
+        <span class="skill-tag">M&A Modelling</span>
+        <span class="skill-tag">LBO Modelling</span>
+        <span class="skill-tag">DCF Valuation</span>
+        <span class="skill-tag">Time-Series Analysis</span>
+        <span class="skill-tag">Survival Analysis</span>
+        <span class="skill-tag">Portfolio Optimisation</span>
+      </div>
+    </div>
+    <div class="about-stats">
+      <div class="about-stat">
+        <span class="about-stat-label">Overall WAM</span>
+        <span class="about-stat-value">74.4 – High Credit</span>
+      </div>
+      <div class="about-stat">
+        <span class="about-stat-label">Trimester 3, 2025 WAM</span>
+        <span class="about-stat-value">86.00 – Top 2%</span>
+      </div>
+      <div class="about-stat">
+        <span class="about-stat-label">Portfolio Management</span>
+        <span class="about-stat-value">3rd in Cohort — 96</span>
+      </div>
+      <div class="about-stat">
+        <span class="about-stat-label">Trading & Market Making</span>
+        <span class="about-stat-value">5th in Cohort — 85</span>
+      </div>
+      <div class="about-stat">
+        <span class="about-stat-label">ATAR</span>
+        <span class="about-stat-value">99.20 – State Rank</span>
+      </div>
+      <div class="about-stat">
+        <span class="about-stat-label">Case Competitions</span>
+        <span class="about-stat-value">180DC Winner · Quantium Finalist</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-number">02</span>
+    <h2 class="section-title">Projects</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- FEATURED: Copper Futures -->
+    <div class="project-card featured">
+      <div class="featured-left">
+        <span class="project-cat">Quantitative Finance · Trading</span>
+        <h3 class="project-title">Quantitative Trading Strategy – High Grade Copper Futures</h3>
+        <span class="project-date">November 2025</span>
+        <p class="project-desc">Designed and implemented a Macro-Factor &amp; Carry-Filtered trading strategy in Python, integrating macroeconomic signals with futures-carry indicators and tested across in-sample (2024) and out-of-sample (2025) data. Fine-tuned execution assumptions using order book and market microstructure analysis, with training from experts at Susquehanna, Cboe, and Nine Mile Financial.</p>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Backtesting</span>
+          <span class="project-tag">Futures</span>
+          <span class="project-tag">Macro Signals</span>
+          <span class="project-tag">Volatility Regimes</span>
+        </div>
+      </div>
+      <div class="featured-right">
+        <ul class="project-highlights">
+          <li>Dynamic position sizing and 3-sigma shock detection to filter tariff shock regimes</li>
+          <li>Boosted out-of-sample returns from 2.56% → 10.2% through engine optimisation</li>
+          <li>Raised profit factor from 0.67 → 4.0</li>
+          <li>Reduced maximum drawdown from 4.14% → 0.64%</li>
+        </ul>
+        <div class="featured-metric">
+          <div class="metric-box">
+            <span class="metric-val">10.2%</span>
+            <span class="metric-label">OOS Return</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-val">4.0×</span>
+            <span class="metric-label">Profit Factor</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-val">0.64%</span>
+            <span class="metric-label">Max Drawdown</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- M&A -->
+    <div class="project-card">
+      <span class="project-cat">Investment Banking · M&A</span>
+      <h3 class="project-title">M&A Transaction Model – Accent Group & Super Retail Group</h3>
+      <span class="project-date">June 2025</span>
+      <ul class="project-highlights">
+        <li>Integrated 3-statement financial models across 5-year standalone and post-acquisition scenarios</li>
+        <li>DCF &amp; WACC estimation (6.92%) → indicative offer price of $3.75/share ($2.1B equity value)</li>
+        <li>Modelled $956M incremental debt capacity with covenant compliance</li>
+        <li>EPS accretion of +7.8% in FY26 scaling to +88% by FY30; 92.6% synergies retained by SRG</li>
+      </ul>
+      <div class="project-tags">
+        <span class="project-tag">M&A Modelling</span>
+        <span class="project-tag">DCF</span>
+        <span class="project-tag">WACC</span>
+        <span class="project-tag">Accretion / Dilution</span>
+        <span class="project-tag">Excel</span>
+      </div>
+    </div>
+
+    <!-- LBO -->
+    <div class="project-card">
+      <span class="project-cat">Private Equity · LBO</span>
+      <h3 class="project-title">Leveraged Buyout Model – Panera</h3>
+      <span class="project-date">July 2025</span>
+      <ul class="project-highlights">
+        <li>Fully integrated LBO: sources &amp; uses, debt tranching, dynamic amortisation, excess cash sweep</li>
+        <li>Entry valuation of $6.49B EV (16.4× EV/EBITDA); $3B debt / $3.73B equity</li>
+        <li>Sponsor IRRs of 18.9%–24.4% and cash-on-cash multiples of 2.38×–2.98×</li>
+        <li>Sensitivity analysis across EBITDA growth, exit multiple, and capital structure</li>
+      </ul>
+      <div class="project-tags">
+        <span class="project-tag">LBO Modelling</span>
+        <span class="project-tag">Debt Tranching</span>
+        <span class="project-tag">IRR Analysis</span>
+        <span class="project-tag">Excel</span>
+      </div>
+    </div>
+
+    <!-- Time Series -->
+    <div class="project-card">
+      <span class="project-cat">Quantitative Finance · Risk</span>
+      <h3 class="project-title">Time-Series Risk & Forecasting Analysis – NVIDIA & AMD</h3>
+      <span class="project-date">July 2025</span>
+      <ul class="project-highlights">
+        <li>ARIMA &amp; VAR modelling on 15+ years of daily equity returns (2010–2025)</li>
+        <li>45% VaR reduction (11.18% → 6.16%) through portfolio diversification</li>
+        <li>Quantified tail risk via ES &amp; VaR up to 99.5% confidence; AMD ES of 14.18% vs NVDA 11.40%</li>
+        <li>ES minimisation to optimise portfolio weights for risk-aware decision making</li>
+      </ul>
+      <div class="project-tags">
+        <span class="project-tag">ARIMA</span>
+        <span class="project-tag">VAR</span>
+        <span class="project-tag">VaR / ES</span>
+        <span class="project-tag">Python</span>
+        <span class="project-tag">R</span>
+      </div>
+    </div>
+
+    <!-- Portfolio Optimisation -->
+    <div class="project-card">
+      <span class="project-cat">Portfolio Management · Quant</span>
+      <h3 class="project-title">Portfolio Optimisation & Benchmark Tracking – FTSE 100</h3>
+      <span class="project-date">November 2024</span>
+      <ul class="project-highlights">
+        <li>Optimised $50M AUD portfolio across 20–30 FTSE equities minimising tracking error under capital constraints</li>
+        <li>Achieved 0.38% tracking error and 78.41% correlation against FTSE 100</li>
+        <li>Capital growth portfolio delivered 0.6% excess alpha over one month; 15.97% annualised vol</li>
+        <li>Sharpe Ratio, MVP and correlation analysis for risk &amp; efficiency evaluation</li>
+      </ul>
+      <div class="project-tags">
+        <span class="project-tag">Portfolio Optimisation</span>
+        <span class="project-tag">Tracking Error</span>
+        <span class="project-tag">Sharpe Ratio</span>
+        <span class="project-tag">Python</span>
+      </div>
+    </div>
+
+    <!-- COVID Predictive -->
+    <div class="project-card">
+      <span class="project-cat">Data Science · Predictive Modelling</span>
+      <h3 class="project-title">Predictive Modelling of COVID-19 Mortality Risk</h3>
+      <span class="project-date">July 2024</span>
+      <ul class="project-highlights">
+        <li>EDA &amp; feature engineering on large healthcare dataset; reduced predictors via correlation analysis</li>
+        <li>Compared GLMs, splines, decision trees, neural networks, LASSO, gradient boosting &amp; Random Forest</li>
+        <li>10-fold cross-validation &amp; hyperparameter tuning; optimal Spline Model: F1 = 0.77, AUC = 0.78, MSE = 0.27</li>
+        <li>Identified demographic disparities: male mortality 41.7% vs female 38.9%</li>
+      </ul>
+      <div class="project-tags">
+        <span class="project-tag">Machine Learning</span>
+        <span class="project-tag">LASSO</span>
+        <span class="project-tag">Random Forest</span>
+        <span class="project-tag">Python</span>
+        <span class="project-tag">R</span>
+      </div>
+    </div>
+
+    <!-- Survival Analysis -->
+    <div class="project-card">
+      <span class="project-cat">Actuarial · Biostatistics</span>
+      <h3 class="project-title">Survival Analysis of Influenza & COVID-19 Outcomes</h3>
+      <span class="project-date">March 2025</span>
+      <ul class="project-highlights">
+        <li>Kaplan-Meier estimators and Cox proportional hazards models on real-world clinical data</li>
+        <li>Key mortality drivers: obesity (+42.9%), cardiovascular disease (+13.1%), vaccination (−39.3%)</li>
+        <li>Model concordance of 0.656; disproved "COVID is just another flu" — 30.3% higher adjusted mortality risk</li>
+      </ul>
+      <div class="project-tags">
+        <span class="project-tag">Survival Analysis</span>
+        <span class="project-tag">Cox PH</span>
+        <span class="project-tag">Kaplan-Meier</span>
+        <span class="project-tag">R</span>
+      </div>
+    </div>
+
+    <!-- HELP Indexation -->
+    <div class="project-card">
+      <span class="project-cat">Policy Analysis · Actuarial</span>
+      <h3 class="project-title">Data-Driven Policy & Financial Impact Analysis – HELP Indexation</h3>
+      <span class="project-date">November 2023</span>
+      <ul class="project-highlights">
+        <li>Modelled CPI-based indexation impact on Australia's $74B HELP loan portfolio across inflation scenarios</li>
+        <li>Analysed CPI surge from 0.8% (2020) to 7.0% (2023); quantified $1,759 increase per borrower</li>
+        <li>Estimated $3.6B+ aggregate debt growth across 3M+ Australians</li>
+        <li>Professional dashboards comparing CPI vs Wage Price Index mechanisms with policy impact insights</li>
+      </ul>
+      <div class="project-tags">
+        <span class="project-tag">Policy Modelling</span>
+        <span class="project-tag">Power BI</span>
+        <span class="project-tag">Excel</span>
+        <span class="project-tag">CPI Analysis</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-number">03</span>
+    <h2 class="section-title">Experience</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <span class="exp-period">Sep 2024 – Dec 2024</span>
+        <div class="exp-org">Fotowatio Renewable Ventures</div>
+        <div class="exp-loc">Sydney, NSW</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Project Finance Intern</div>
+        <ul class="exp-points">
+          <li>Supported $500M+ renewable energy M&A transactions through financial modelling, due diligence and tail-risk modelling</li>
+          <li>Stress-tested 10+ sheet integrated financial models under variable price, rate and seasonality assumptions, maintaining 1.5× DSCR and 12.2% base case IRR across extreme scenarios</li>
+          <li>Designed and implemented an automated Excel data pipeline linking the technical workbook and financial model, reducing manual workload by 40 hours per month</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <span class="exp-period">Jul 2022 – Sep 2024</span>
+        <div class="exp-org">Alpha One Coaching College</div>
+        <div class="exp-loc">Bella Vista, NSW</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Senior Tutor & Solution Maker</div>
+        <ul class="exp-points">
+          <li>Developed tailored learning plans for 50+ students using performance data and KPIs, improving academic outcomes by 25%</li>
+          <li>Achieved 90% student retention through clear communication with students and parents and cross-functional collaboration</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <span class="exp-period">Oct 2022 – Present</span>
+        <div class="exp-org">UNSW Indian Society</div>
+        <div class="exp-loc">Kensington, NSW</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Treasurer & Arc Delegate</div>
+        <ul class="exp-points">
+          <li>Managed and forecasted an annual budget of $40,000+ using Excel and Power BI; oversaw daily financial operations for a 6,000+ member base</li>
+          <li>Prepared financial reports and data-backed insights to monitor KPIs and improve budgetary transparency</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-number">04</span>
+    <h2 class="section-title">Contact</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="contact-inner">
+    <div>
+      <h2 class="contact-headline">Let's<br><em>connect.</em></h2>
+      <p style="margin-top:28px; font-size:15px; color:var(--warm-mid); font-weight:300; max-width:320px; line-height:1.8;">Open to opportunities in quantitative finance, investment banking, actuarial consulting, and data science.</p>
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:vashishtaaryan6123@outlook.com">
+        <div>
+          <span class="contact-link-label">Email</span>
+          <span class="contact-link-value">vashishtaaryan6123@outlook.com</span>
+        </div>
+        <span class="contact-link-arrow">→</span>
+      </a>
+      <a class="contact-link" href="tel:+61423609746">
+        <div>
+          <span class="contact-link-label">Phone</span>
+          <span class="contact-link-value">+61 423 609 746</span>
+        </div>
+        <span class="contact-link-arrow">→</span>
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/aryan-vashishta-bb10b21a1" target="_blank">
+        <div>
+          <span class="contact-link-label">LinkedIn</span>
+          <span class="contact-link-value">aryan-vashishta</span>
+        </div>
+        <span class="contact-link-arrow">→</span>
+      </a>
+      <a class="contact-link" href="#">
+        <div>
+          <span class="contact-link-label">University</span>
+          <span class="contact-link-value">UNSW Sydney — Actuarial Studies / Commerce</span>
+        </div>
+        <span class="contact-link-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Aryan Vashishta</span>
+  <span class="footer-note">UNSW Sydney · 2025</span>
+</footer>
+
+</body>
+</html>
